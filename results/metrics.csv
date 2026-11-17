@@ -1,0 +1,13 @@
+dataset,model,accuracy,roc_auc,average_precision,precision,recall,specificity,tn,fp,fn,tp
+Original urinalysis,All-negative baseline,0.951049,0.500000,0.048951,0.000000,0.000000,1.000000,272,0,14,0
+Original urinalysis,Dedeene-inspired MLP,0.944056,0.718487,0.266787,0.400000,0.285714,0.977941,266,6,10,4
+Original urinalysis,Farashi-inspired voting,0.951049,0.806723,0.356109,0.500000,0.071429,0.996324,271,1,13,1
+Original urinalysis,Favresse-inspired CatBoost,0.958042,0.782563,0.340670,1.000000,0.142857,1.000000,272,0,12,2
+FlowUTI elderly,All-negative baseline,0.577586,0.500000,0.422414,0.000000,0.000000,1.000000,134,0,98,0
+FlowUTI elderly,Dedeene-inspired MLP,0.853448,0.925069,0.920283,0.900000,0.734694,0.940299,126,8,26,72
+FlowUTI elderly,Farashi-inspired voting,0.857759,0.923546,0.923499,0.835052,0.826531,0.880597,118,16,17,81
+FlowUTI elderly,Favresse-inspired CatBoost,0.862069,0.905041,0.903064,0.851064,0.816327,0.895522,120,14,18,80
+FlowUTI neonates,All-negative baseline,0.714286,0.500000,0.285714,0.000000,0.000000,1.000000,30,0,12,0
+FlowUTI neonates,Dedeene-inspired MLP,0.785714,0.919444,0.831590,0.666667,0.500000,0.900000,27,3,6,6
+FlowUTI neonates,Farashi-inspired voting,0.785714,0.866667,0.741640,0.666667,0.500000,0.900000,27,3,6,6
+FlowUTI neonates,Favresse-inspired CatBoost,0.785714,0.880556,0.761735,0.666667,0.500000,0.900000,27,3,6,6
