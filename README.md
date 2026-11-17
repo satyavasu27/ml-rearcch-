@@ -16,11 +16,12 @@ The three PDFs in `papers/` are research papers, not datasets.
 
 ## Current paper-inspired experiments
 
-The three paper-inspired approaches can be run on Taylor with
-`python experiments/run_selected.py --dataset taylor`. The implementation,
-held-out results and important methodological limitations are documented in
-[`results/selected/REPORT.md`](results/selected/REPORT.md). These are
-exploratory adaptations, not exact reproductions or clinical tools.
+The three selected journal articles are Choi et al. (2024), Sheele et al.
+(2025), and Sergounioti et al. (2025). Their paper-inspired approaches can be
+run on Taylor with `python experiments/run_selected.py --dataset taylor`.
+Paper details, implementation, held-out results and methodological limitations
+are in [`results/journal_articles/REPORT.md`](results/journal_articles/REPORT.md).
+These are exploratory adaptations, not exact reproductions or clinical tools.
 
 The Trang loader is prepared but **untested on the original dataset**; to run
 it, download the original discovery CSV linked above and place it at
@@ -29,6 +30,10 @@ using the resulting metrics. `--dataset all` requires both files and fails if
 Trang is missing. No Trang results have been generated.
 
 ## Earlier exploratory experiments
+
+The previous Taylor results for Dedeene, Farashi and Favresse are preserved in
+[`results/selected/REPORT.md`](results/selected/REPORT.md), with their code in
+commit `d8ba697`. They are not results for the current journal selection.
 
 [`results/REPORT.md`](results/REPORT.md) and `results/metrics.csv` are
 historical results for the removed datasets. `experiments/run_experiments.py`

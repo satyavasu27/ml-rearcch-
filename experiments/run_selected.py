@@ -10,10 +10,12 @@ import warnings
 import numpy as np
 import pandas as pd
 from sklearn.dummy import DummyClassifier
+from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier, VotingClassifier
 from sklearn.model_selection import GroupShuffleSplit, train_test_split
 from sklearn.pipeline import Pipeline
+from xgboost import XGBClassifier
 
-from run_experiments import SEED, evaluate, make_models, make_preprocessor
+from run_experiments import SEED, evaluate, make_preprocessor
 
 ROOT = Path(__file__).resolve().parents[1]
 TAYLOR = ROOT / 'data/taylor/S1File.csv'
@@ -73,12 +75,31 @@ def split_data(x, y, groups):
     return train, test
 
 
+def make_journal_models():
+    # Algorithm-level adaptations, not the original fitted or tuned models.
+    def forest():
+        return RandomForestClassifier(n_estimators=150, min_samples_leaf=5,
+                                      n_jobs=1, random_state=SEED)
+    def xgb():
+        return XGBClassifier(n_estimators=150, max_depth=3, learning_rate=0.1,
+                             n_jobs=1, random_state=SEED, eval_metric='logloss')
+    def extra():
+        return ExtraTreesClassifier(n_estimators=150, min_samples_leaf=5,
+                                    n_jobs=1, random_state=SEED)
+    return {
+        'All-negative baseline': DummyClassifier(strategy='constant', constant=0),
+        'Choi-inspired XGBoost': xgb(),
+        'Sheele-inspired random forest': forest(),
+        'Sergounioti-inspired voting': VotingClassifier(
+            estimators=[('rf', forest()), ('xgb', xgb()), ('extra', extra())],
+            voting='soft', n_jobs=1),
+    }
+
+
 def run_one(name):
     x, y, groups, path = load_data(name)
     train, test = split_data(x, y, groups)
-    models = make_models()
-    # Set finite computational budget and deterministic single-worker models.
-    models['Dedeene-inspired MLP'].set_params(max_iter=80)
+    models = make_journal_models()
     records, model_warnings = [], {}
     for label, estimator in models.items():
         model = Pipeline([('preprocess', make_preprocessor(x)), ('model', estimator)])
@@ -100,7 +121,7 @@ def run_one(name):
             'split': 'patient-group shuffle' if groups is not None else 'stratified record split (patient IDs unavailable)',
             'train_index_sha256': hashlib.sha256(np.asarray(train, dtype='<i8').tobytes()).hexdigest(),
             'test_index_sha256': hashlib.sha256(np.asarray(test, dtype='<i8').tobytes()).hexdigest()}
-    out = ROOT / 'results/selected'
+    out = ROOT / 'results/journal_articles'
     out.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(records).to_csv(out / f'{name}_metrics.csv', index=False, float_format='%.6f')
     (out / f'{name}_split.json').write_text(json.dumps(info, indent=2) + '\n')

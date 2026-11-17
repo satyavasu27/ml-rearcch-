@@ -1,0 +1,5 @@
+dataset,model,accuracy,roc_auc,average_precision,precision,recall,specificity,tn,fp,fn,tp
+taylor,All-negative baseline,0.774157,0.500000,0.225843,0.000000,0.000000,1.000000,12426,0,3625,0
+taylor,Choi-inspired XGBoost,0.862999,0.891363,0.762879,0.784290,0.542621,0.956462,11885,541,1658,1967
+taylor,Sheele-inspired random forest,0.866114,0.892035,0.764888,0.798785,0.544276,0.960003,11929,497,1652,1973
+taylor,Sergounioti-inspired voting,0.866426,0.893598,0.767536,0.800406,0.544276,0.960406,11934,492,1652,1973

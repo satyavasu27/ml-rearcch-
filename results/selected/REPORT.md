@@ -1,5 +1,9 @@
 # Experiments on selected datasets
 
+> Historical results for a previous selection of papers. The active script now
+> implements a different set of journal articles; for the code used here see
+> commit `d8ba697`. Current results are in `results/journal_articles/`.
+
 These are **exploratory paper-inspired adaptations**, not reproductions of the
 original papers, their exact features, optimized hyperparameters, validation
 procedures, or reported results. They are not clinical decision tools.

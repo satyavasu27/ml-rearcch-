@@ -5,10 +5,18 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'experiments'))
-from run_selected import TAYLOR_FEATURES, TRANG_FEATURES, load_data, split_data
+from run_selected import TAYLOR_FEATURES, TRANG_FEATURES, load_data, split_data, make_journal_models
 
 
 class SelectedExperimentsTest(unittest.TestCase):
+    def test_selected_journal_approaches(self):
+        models = make_journal_models()
+        self.assertEqual(set(models), {'All-negative baseline', 'Choi-inspired XGBoost',
+                                      'Sheele-inspired random forest', 'Sergounioti-inspired voting'})
+        voting = models['Sergounioti-inspired voting']
+        self.assertEqual(voting.voting, 'soft')
+        self.assertEqual([name for name, _ in voting.estimators], ['rf', 'xgb', 'extra'])
+
     def test_feature_allowlists_exclude_outcomes_and_identifiers(self):
         self.assertFalse({'PATID', 'ID', 'UCX_abnormal', 'UTI_diag', 'abx'} & set(TAYLOR_FEATURES))
         self.assertFalse({'URCULBAC', 'URCUL_pos_yn'} & set(TRANG_FEATURES))

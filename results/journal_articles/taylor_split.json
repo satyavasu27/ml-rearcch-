@@ -1,0 +1,39 @@
+{
+  "dataset": "taylor",
+  "source_sha256": "72c054b8fee2bf12a35ac1e649cf6d675ca6abb4db884c3991428666d754ef14",
+  "features": [
+    "age",
+    "gender",
+    "ua_bacteria",
+    "ua_bili",
+    "ua_blood",
+    "ua_clarity",
+    "ua_color",
+    "ua_epi",
+    "ua_glucose",
+    "ua_ketones",
+    "ua_leuk",
+    "ua_nitrite",
+    "ua_ph",
+    "ua_protein",
+    "ua_rbc",
+    "ua_spec_grav",
+    "ua_urobili",
+    "ua_wbc"
+  ],
+  "seed": 42,
+  "rows": 80387,
+  "train_rows": 64336,
+  "test_rows": 16051,
+  "train_positive": 14659,
+  "test_positive": 3625,
+  "warnings": {
+    "All-negative baseline": [],
+    "Choi-inspired XGBoost": [],
+    "Sheele-inspired random forest": [],
+    "Sergounioti-inspired voting": []
+  },
+  "split": "patient-group shuffle",
+  "train_index_sha256": "d28baae0e6b2b6794c1ad7c677d1aff2641adae20ed863631a08928da32d5554",
+  "test_index_sha256": "915b8e5643b9f12417ce267aa6cca78e1fe3390968809d5bd9a49e9e84e54925"
+}
