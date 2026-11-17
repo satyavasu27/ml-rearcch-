@@ -1,0 +1,50 @@
+[
+  {
+    "dataset": "Original urinalysis",
+    "rows": 1436,
+    "features": [
+      "Age",
+      "Gender",
+      "Color",
+      "Transparency",
+      "Glucose",
+      "Protein",
+      "pH",
+      "Specific Gravity",
+      "WBC",
+      "RBC",
+      "Epithelial Cells",
+      "Mucous Threads",
+      "Amorphous Urates",
+      "Bacteria"
+    ],
+    "train_rows": 1150,
+    "train_positive": 67,
+    "test_rows": 286,
+    "test_positive": 14
+  },
+  {
+    "dataset": "FlowUTI elderly",
+    "rows": 1174,
+    "features": [
+      "Leukocytes",
+      "Bacteria"
+    ],
+    "train_rows": 942,
+    "train_positive": 398,
+    "test_rows": 232,
+    "test_positive": 98
+  },
+  {
+    "dataset": "FlowUTI neonates",
+    "rows": 204,
+    "features": [
+      "Bacteria",
+      "Leukocytes"
+    ],
+    "train_rows": 162,
+    "train_positive": 45,
+    "test_rows": 42,
+    "test_positive": 12
+  }
+]
