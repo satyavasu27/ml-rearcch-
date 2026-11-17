@@ -26,6 +26,14 @@ SEED = 42
 
 
 def load_datasets(root=ROOT):
+    required = [root / 'urinalysis_tests.csv', root / 'data/flowuti/Elderly.csv',
+                root / 'data/flowuti/Neonates.csv']
+    missing = [str(path.relative_to(root)) for path in required if not path.is_file()]
+    if missing:
+        raise FileNotFoundError(
+            'These historical experiments require datasets removed from the current '
+            'checkout. Restore them from an earlier Git revision to rerun. Missing: '
+            + ', '.join(missing))
     original = pd.read_csv(root / 'urinalysis_tests.csv')
     if 'Unnamed: 0' not in original or 'Diagnosis' not in original:
         raise ValueError('Expected an index and Diagnosis column in the original dataset')

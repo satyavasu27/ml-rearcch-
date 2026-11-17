@@ -6,7 +6,12 @@ from experiments.run_experiments import (ROOT, evaluate, features_and_labels,
                                          load_datasets, make_preprocessor, split_indices)
 
 
+HISTORICAL_DATA_AVAILABLE = all((ROOT / path).is_file() for path in (
+    'urinalysis_tests.csv', 'data/flowuti/Elderly.csv', 'data/flowuti/Neonates.csv'))
+
+
 class ExperimentTests(unittest.TestCase):
+    @unittest.skipUnless(HISTORICAL_DATA_AVAILABLE, 'Historical datasets removed from current checkout')
     def test_load_and_targets(self):
         datasets = load_datasets()
         self.assertEqual([len(frame) for _, frame, _ in datasets], [1436, 1174, 204])
@@ -18,6 +23,7 @@ class ExperimentTests(unittest.TestCase):
             self.assertNotIn('Unnamed: 0', x.columns)
             self.assertEqual(set(y), {0, 1})
 
+    @unittest.skipUnless(HISTORICAL_DATA_AVAILABLE, 'Historical datasets removed from current checkout')
     def test_no_duplicate_feature_vector_crosses_split(self):
         for _, frame, target in load_datasets():
             x, y = features_and_labels(frame, target)

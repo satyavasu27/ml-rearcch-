@@ -1,5 +1,10 @@
 # Paper-inspired urinalysis experiments
 
+> **Historical results:** These experiments used the former original and
+> FlowUTI datasets, which were removed from the current checkout. They are not
+> results for the Taylor or Dedeene datasets. Reproduction requires restoring
+> the former input files from an earlier Git revision.
+
 ## What was implemented
 
 Each cohort was trained and evaluated separately using three fixed classifiers,
@@ -22,7 +27,7 @@ The trained models here are not the authors' original models.
 - **Dataset 2:** FlowUTI has separate elderly (1,174 records, 496 positives)
   and neonatal (204 records, 57 positives) files. We do not pool them because
   age populations, instruments and culture positivity thresholds differ.
-  See [`data/flowuti/README.md`](../data/flowuti/README.md) for provenance.
+  See the [original FlowUTI paper](https://doi.org/10.1371/journal.pone.0277340) for provenance.
   Both have only bacteria and leukocyte measurements and a culture label;
   this outcome and these measures are not necessarily equivalent to those in
   dataset 1. The original and FlowUTI datasets are not schema-compatible for
@@ -79,7 +84,8 @@ and calibrate any clinical threshold using training/validation data only.
 
 ## Reproduce
 
-From the repository root, using Python 3.11:
+After restoring the historical input files from an earlier revision, run from
+that checkout's repository root using Python 3.11:
 
 ```sh
 python -m venv .venv
