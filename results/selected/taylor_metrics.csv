@@ -1,0 +1,5 @@
+dataset,model,accuracy,roc_auc,average_precision,precision,recall,specificity,tn,fp,fn,tp
+taylor,All-negative baseline,0.774157,0.500000,0.225843,0.000000,0.000000,1.000000,12426,0,3625,0
+taylor,Dedeene-inspired MLP,0.860196,0.887398,0.751035,0.732257,0.600552,0.935941,11630,796,1448,2177
+taylor,Farashi-inspired voting,0.862002,0.890001,0.759449,0.791322,0.528276,0.959359,11921,505,1710,1915
+taylor,Favresse-inspired CatBoost,0.866862,0.895119,0.771574,0.787703,0.561931,0.955818,11877,549,1588,2037

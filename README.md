@@ -14,6 +14,20 @@ The formerly included original urinalysis and FlowUTI CSV files were removed
 from the current checkout as requested. Their history remains in Git history.
 The three PDFs in `papers/` are research papers, not datasets.
 
+## Current paper-inspired experiments
+
+The three paper-inspired approaches can be run on Taylor with
+`python experiments/run_selected.py --dataset taylor`. The implementation,
+held-out results and important methodological limitations are documented in
+[`results/selected/REPORT.md`](results/selected/REPORT.md). These are
+exploratory adaptations, not exact reproductions or clinical tools.
+
+The Trang loader is prepared but **untested on the original dataset**; to run
+it, download the original discovery CSV linked above and place it at
+`data/trang/pone.0323664.s003.csv`. Verify the file and variable meanings before
+using the resulting metrics. `--dataset all` requires both files and fails if
+Trang is missing. No Trang results have been generated.
+
 ## Earlier exploratory experiments
 
 [`results/REPORT.md`](results/REPORT.md) and `results/metrics.csv` are
